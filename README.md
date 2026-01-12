@@ -98,7 +98,7 @@ Dada la raíz de un árbol binario, el algoritmo devuelve su versión invertida 
 
 ### Ejercicio 03: Listar Niveles en Listas Enlazadas
 
-📂 Carpeta: `Ejercicio_03_listLeves`
+📂 Carpeta: `Ejercicio_03_listLevels`
 Devuelve una lista enlazada con los nodos por nivel. Si hay N niveles, se obtienen N listas.
 
  **Input de ejemplo:**
@@ -185,3 +185,80 @@ Para contribuir a este proyecto, por favor crea un fork y envía una solicitud d
 
 - [PABLO TORRES] - Desarrollo inicial
 
+## Explicación de la Solución Implementada
+
+A continuación se describe el funcionamiento y la lógica utilizada en cada uno de los ejercicios desarrollados. En todos los casos se reutilizan las clases proporcionadas en el paquete `main.Materia`, respetando la arquitectura base del proyecto.
+
+---
+
+### Ejercicio 01: Insertar en un Árbol Binario de Búsqueda (BST)
+
+Para este ejercicio se utiliza la clase `ArbolBinario`, la cual ya implementa el método de inserción cumpliendo las reglas de un Árbol Binario de Búsqueda (BST):
+
+* Los valores menores se insertan en el subárbol izquierdo.
+* Los valores mayores se insertan en el subárbol derecho.
+* No se permiten valores duplicados.
+
+La clase del ejercicio se encarga únicamente de:
+
+1. Insertar los valores recibidos usando `arbol.insert(valor)`.
+2. Imprimir el árbol por niveles utilizando un recorrido en anchura (BFS).
+
+El recorrido BFS se implementa con una cola (`Queue`), permitiendo imprimir un nivel del árbol por línea, exactamente como se solicita en el enunciado.
+
+---
+
+### Ejercicio 02: Invertir un Árbol Binario
+
+En este ejercicio se implementa un algoritmo recursivo que invierte el árbol binario intercambiando los hijos izquierdo y derecho de cada nodo.
+
+La lógica aplicada es:
+
+* Si el nodo es nulo, se retorna nulo.
+* Se invierte recursivamente el subárbol izquierdo y el derecho.
+* Se intercambian las referencias de los hijos.
+
+Este proceso se aplica a todos los nodos del árbol, obteniendo así el árbol espejo.
+La impresión del resultado se realiza utilizando el mismo recorrido por niveles del Ejercicio 01, garantizando el formato solicitado.
+
+---
+
+### Ejercicio 03: Listar Niveles en Listas Enlazadas
+
+Para este ejercicio se recorre el árbol por niveles utilizando nuevamente un recorrido BFS con una cola.
+
+Por cada nivel del árbol:
+
+* Se crea una lista enlazada (`LinkedList<Integer>`).
+* Se agregan los valores de los nodos correspondientes a ese nivel.
+* La lista se almacena en una estructura principal que contiene todas las listas.
+
+Finalmente, cada lista se imprime respetando el formato:
+
+```
+valor1 -> valor2 -> valor3
+```
+
+De esta manera, si el árbol tiene N niveles, se generan N listas enlazadas, cumpliendo exactamente con el requerimiento del ejercicio.
+
+---
+
+### Ejercicio 04: Calcular la Profundidad Máxima
+
+La profundidad máxima del árbol se calcula mediante un algoritmo recursivo.
+
+La lógica aplicada es:
+
+* Si el nodo es nulo, la profundidad es 0.
+* Se calcula la profundidad del subárbol izquierdo.
+* Se calcula la profundidad del subárbol derecho.
+* Se retorna el valor máximo entre ambas profundidades más uno (correspondiente al nodo actual).
+
+Este método permite determinar correctamente la longitud del camino más largo desde la raíz hasta una hoja.
+
+---
+
+### Evidencia de Funcionamiento
+
+Los ejercicios fueron ejecutados desde la clase `App.java`, obteniendo salidas idénticas a las indicadas en el enunciado de la práctica.
+El proyecto compila correctamente y pasa las pruebas automáticas configuradas mediante GitHub Actions.
